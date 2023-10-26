@@ -15,9 +15,22 @@ menuBtn.addEventListener('click', (evt) => {
 const pageTop = document.querySelector('#page-top');
 const getScrollY = () => {
     const scrolled = window.scrollY;
+    const classOpen = pageTop.classList.contains('open');
     if (scrollY >= 300) {
+        if ( !classOpen ){
+            pageTop.animate( {
+                translate:['0 2rem', 0],
+                opacity:[0,1],
+            },500);
+        }
         pageTop.classList.add('open');
     } else {
+        if ( classOpen ){
+            pageTop.animate( {
+                translate:[0,'0 2rem'],
+                opacity:[1,0],
+            },500);
+        }
         pageTop.classList.remove('open');
     }
 };
